@@ -1,4 +1,4 @@
-# Release Guide
+﻿# Release Guide
 
 ## Minimal Release Prerequisites
 
@@ -9,16 +9,16 @@
 ## Pre-Release Check
 
 ```bash
-python ChemReact/scripts/run_closed_loop.py \
-  --output-dir ChemReact/sample_output_template \
+python skills/ChemReact/scripts/run_closed_loop.py \
+  --output-dir skills/ChemReact/sample_output_template \
   --emit-vis-plan-template-only
 
-python ChemReact/scripts/run_closed_loop.py \
+python skills/ChemReact/scripts/run_closed_loop.py \
   --target-smiles "CCCCC1=NC(Cl)=C(CO)N1CC2=CC=C(C3=CC=CC=C3C4=NNN=N4)C=C2" \
-  --routes-file ChemReact/samples/routes.json \
-  --strategy-file ChemReact/samples/strategy.json \
-  --vis-plan-file ChemReact/samples/vis_plan.json \
-  --output-dir ChemReact/sample_output
+  --routes-file skills/ChemReact/samples/routes.json \
+  --strategy-file skills/ChemReact/samples/strategy.json \
+  --vis-plan-file skills/ChemReact/samples/vis_plan.json \
+  --output-dir skills/ChemReact/sample_output
 ```
 
 ## Version Tagging (Local)
@@ -64,3 +64,4 @@ git push origin v0.1.0
 - Added host adapters for Claude Code / OpenCode / Cursor
 - Added visualization tree with orthogonal target-to-precursor connectors
 ```
+

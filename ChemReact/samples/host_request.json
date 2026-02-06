@@ -1,9 +1,9 @@
 {
   "target_smiles": "CCCCC1=NC(Cl)=C(CO)N1CC2=CC=C(C3=CC=CC=C3C4=NNN=N4)C=C2",
-  "routes_file": "ChemReact/samples/routes.json",
-  "strategy_file": "ChemReact/samples/strategy.json",
-  "vis_plan_file": "ChemReact/samples/vis_plan.json",
-  "output_dir": "ChemReact/sample_output_host",
+  "routes_file": "routes.json",
+  "strategy_file": "strategy.json",
+  "vis_plan_file": "vis_plan.json",
+  "output_dir": "../sample_output_host",
   "top_k": 1,
   "force_field": "MMFF",
   "target_legend": "Target Molecule"

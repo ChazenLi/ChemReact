@@ -1,4 +1,4 @@
-# Data Contract
+﻿# Data Contract
 
 Runtime contract enforcement:
 - `run_closed_loop.py` validates `routes_file`, `strategy_file`, and `vis_plan_file` before rendering.
@@ -53,7 +53,7 @@ Top-level object:
 ## `vis_plan_file` JSON
 
 Use the schema required by `get_visualization_specialist_prompt` in:
-- `retroskill/prompts_personas.py`
+- `skills/ChemReact/internal/retroskill/prompts_personas.py`
 
 Core fields:
 - `selected_route_ids`
@@ -66,7 +66,8 @@ Core fields:
 Template generation:
 
 ```bash
-python ChemReact/scripts/run_closed_loop.py \
+python skills/ChemReact/scripts/run_closed_loop.py \
   --output-dir out \
   --emit-vis-plan-template-only
 ```
+

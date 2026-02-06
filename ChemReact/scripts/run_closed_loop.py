@@ -338,13 +338,13 @@ def _ensure_required_args(args: argparse.Namespace) -> None:
 
 
 def run_pipeline(args: argparse.Namespace) -> Dict[str, Any]:
-    workspace = Path(__file__).resolve().parents[2]
+    skill_root = Path(__file__).resolve().parents[1]
     output_dir = Path(args.output_dir).resolve()
     images_dir = output_dir / "images"
     images_dir.mkdir(parents=True, exist_ok=True)
 
-    retroskill_dir = workspace / "retroskill"
-    rdkit_utils_dir = workspace / "rdkit_utils" / "scripts"
+    retroskill_dir = skill_root / "internal" / "retroskill"
+    rdkit_utils_dir = skill_root / "internal" / "rdkit_utils"
 
     prompts_mod = _load_module("prompts_personas", retroskill_dir / "prompts_personas.py")
     report_mod = _load_module("report_generator", retroskill_dir / "report_generator.py")

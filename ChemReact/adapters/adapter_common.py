@@ -38,22 +38,30 @@ def _validate_request(payload: Dict[str, Any]) -> None:
             raise ValueError(f"request field {key} must be {typ.__name__}")
 
 
-def _build_command(run_script: Path, payload: Dict[str, Any], default_output_dir: str):
+def _resolve_path(request_file: Path, value: str) -> str:
+    p = Path(value)
+    if p.is_absolute():
+        return str(p)
+    return str((request_file.parent / p).resolve())
+
+
+def _build_command(run_script: Path, request_file: Path, payload: Dict[str, Any], default_output_dir: str):
     output_dir = payload.get("output_dir", default_output_dir)
+    output_dir = _resolve_path(request_file, output_dir)
     cmd = [
         sys.executable,
         str(run_script),
         "--target-smiles",
         payload["target_smiles"],
         "--routes-file",
-        payload["routes_file"],
+        _resolve_path(request_file, payload["routes_file"]),
         "--output-dir",
         output_dir,
     ]
     if payload.get("strategy_file"):
-        cmd.extend(["--strategy-file", payload["strategy_file"]])
+        cmd.extend(["--strategy-file", _resolve_path(request_file, payload["strategy_file"])])
     if payload.get("vis_plan_file"):
-        cmd.extend(["--vis-plan-file", payload["vis_plan_file"]])
+        cmd.extend(["--vis-plan-file", _resolve_path(request_file, payload["vis_plan_file"])])
     if payload.get("top_k") is not None:
         cmd.extend(["--top-k", str(payload["top_k"])])
     if payload.get("target_legend"):
@@ -61,7 +69,7 @@ def _build_command(run_script: Path, payload: Dict[str, Any], default_output_dir
     if payload.get("force_field"):
         cmd.extend(["--force-field", payload["force_field"]])
     if payload.get("emit_vis_plan_template"):
-        cmd.extend(["--emit-vis-plan-template", payload["emit_vis_plan_template"]])
+        cmd.extend(["--emit-vis-plan-template", _resolve_path(request_file, payload["emit_vis_plan_template"])])
     return cmd
 
 
@@ -73,11 +81,12 @@ def run_adapter(host_name: str, default_output_dir: str):
     parser.add_argument("--print-command", action="store_true", help="Only print resolved command.")
     args = parser.parse_args()
 
-    payload = _load_request(args.request_file)
+    request_file = Path(args.request_file).resolve()
+    payload = _load_request(str(request_file))
     _validate_request(payload)
 
     run_script = Path(__file__).resolve().parents[1] / "scripts" / "run_closed_loop.py"
-    cmd = _build_command(run_script, payload, default_output_dir)
+    cmd = _build_command(run_script, request_file, payload, default_output_dir)
 
     if args.print_command:
         print(" ".join(cmd))

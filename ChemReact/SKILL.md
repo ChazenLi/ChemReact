@@ -5,7 +5,7 @@ description: Integrate RDKit analysis and retrosynthesis visualization into an e
 
 # ChemReact
 
-Execute a deterministic pipeline that connects `rdkit_utils` and `retroskill`:
+Execute a deterministic self-contained pipeline:
 1. Validate and profile target molecule.
 2. Build a visualization plan prompt for post-route-design rendering.
 3. Render route assets (target, step, grid, tree).
@@ -29,7 +29,7 @@ Execute a deterministic pipeline that connects `rdkit_utils` and `retroskill`:
 Run:
 
 ```bash
-python ChemReact/scripts/run_closed_loop.py \
+python skills/ChemReact/scripts/run_closed_loop.py \
   --target-smiles "CCO" \
   --routes-file path/to/audited_routes.json \
   --strategy-file path/to/strategy.json \
@@ -41,7 +41,7 @@ If `vis_plan_file` is omitted, use score-based fallback selection.
 Generate only contracts/template:
 
 ```bash
-python ChemReact/scripts/run_closed_loop.py \
+python skills/ChemReact/scripts/run_closed_loop.py \
   --output-dir out \
   --emit-vis-plan-template-only
 ```
@@ -59,3 +59,4 @@ python ChemReact/scripts/run_closed_loop.py \
 
 - Read `references/host-integration.md` to wire this skill into Claude Code/OpenCode/Cursor workflows.
 - Read `references/data-contract.md` for strict input JSON contracts.
+

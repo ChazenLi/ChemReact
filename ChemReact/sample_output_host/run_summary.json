@@ -5,13 +5,13 @@
     1
   ],
   "outputs": {
-    "report": "E:\\Python\\skills\\ChemReact\\sample_output_host\\RETRO_REPORT.md",
-    "visualization_prompt": "E:\\Python\\skills\\ChemReact\\sample_output_host\\visualization_prompt.txt",
-    "vis_plan_template": "E:\\Python\\skills\\ChemReact\\sample_output_host\\vis_plan.template.json",
+    "report": "E:\\Python\\skills\\skills\\ChemReact\\sample_output_host\\RETRO_REPORT.md",
+    "visualization_prompt": "E:\\Python\\skills\\skills\\ChemReact\\sample_output_host\\visualization_prompt.txt",
+    "vis_plan_template": "E:\\Python\\skills\\skills\\ChemReact\\sample_output_host\\vis_plan.template.json",
     "schemas": {
-      "routes": "E:\\Python\\skills\\ChemReact\\sample_output_host\\schemas\\routes.schema.json",
-      "strategy": "E:\\Python\\skills\\ChemReact\\sample_output_host\\schemas\\strategy.schema.json",
-      "vis_plan": "E:\\Python\\skills\\ChemReact\\sample_output_host\\schemas\\vis_plan.schema.json"
+      "routes": "E:\\Python\\skills\\skills\\ChemReact\\sample_output_host\\schemas\\routes.schema.json",
+      "strategy": "E:\\Python\\skills\\skills\\ChemReact\\sample_output_host\\schemas\\strategy.schema.json",
+      "vis_plan": "E:\\Python\\skills\\skills\\ChemReact\\sample_output_host\\schemas\\vis_plan.schema.json"
     },
     "image_paths": {
       "target_image": "images/target.png",

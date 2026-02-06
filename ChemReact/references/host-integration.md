@@ -1,4 +1,4 @@
-# Host Integration
+﻿# Host Integration
 
 ## Shared Pattern
 
@@ -17,7 +17,7 @@ Use a two-turn closed loop in any host LLM tool:
 - Direct run:
 
 ```bash
-python ChemReact/scripts/run_closed_loop.py \
+python skills/ChemReact/scripts/run_closed_loop.py \
   --target-smiles "<SMILES>" \
   --routes-file outputs/run_001/routes.json \
   --strategy-file outputs/run_001/strategy.json \
@@ -27,8 +27,8 @@ python ChemReact/scripts/run_closed_loop.py \
 - Adapter run:
 
 ```bash
-python ChemReact/adapters/claudecode_adapter.py \
-  --request-file ChemReact/samples/host_request.json
+python skills/ChemReact/adapters/claudecode_adapter.py \
+  --request-file skills/ChemReact/samples/host_request.json
 ```
 
 ## OpenCode
@@ -38,8 +38,8 @@ python ChemReact/adapters/claudecode_adapter.py \
 - Adapter run:
 
 ```bash
-python ChemReact/adapters/opencode_adapter.py \
-  --request-file ChemReact/samples/host_request.json
+python skills/ChemReact/adapters/opencode_adapter.py \
+  --request-file skills/ChemReact/samples/host_request.json
 ```
 
 ## Cursor
@@ -49,8 +49,8 @@ python ChemReact/adapters/opencode_adapter.py \
 - Adapter run:
 
 ```bash
-python ChemReact/adapters/cursor_adapter.py \
-  --request-file ChemReact/samples/host_request.json
+python skills/ChemReact/adapters/cursor_adapter.py \
+  --request-file skills/ChemReact/samples/host_request.json
 ```
 
 ## Recommended Operational Guards
@@ -59,3 +59,4 @@ python ChemReact/adapters/cursor_adapter.py \
 - Keep route IDs stable across iterations.
 - Version outputs by timestamped directory names.
 - Validate adapter request payload against `schemas/host_request.schema.json`.
+

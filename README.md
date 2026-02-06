@@ -112,6 +112,11 @@ For each step, the system generates high-fidelity reaction mappings, highlightin
 
 ChemReact transforms retrosynthesis from a solo "guessing" game into an audited, visual, and documented engineering process. By combining the precision of RDKit with the flexibility of multi-persona LLMs, it offers a scalable solution for early-stage drug discovery and process chemistry.
 
+But there are still some problems:     
+① there are still some small stom mismatch in the whole retro reaction(you can even see on the two examples above, well this maybe a small problem and will be fixed in the next version, if i have enough time to do so), now this program is more like an assiatant than a independent researcher.
+② it is still a long voyage to the multi-step retro/forward synthesis, especially for the new reaction and complicated, multi compound reaction in the specific conditions. well i think this is also a huge problem for the frontier AI researchers, maybe.
+③ the accuracy is not the only thing need tobe improved, so is the diversity. in reality there are always multi routes to approach the same compound which means i need to design a better strategy for further routes designing, lol, may not be that easy...
+
 ---
 **Released Version**: v0.1.0      the multi-step skill is coming
 [PROJECT_REPORT.pdf](https://github.com/user-attachments/files/25139404/PROJECT_REPORT.pdf)

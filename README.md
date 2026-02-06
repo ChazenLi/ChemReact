@@ -46,14 +46,69 @@ For each step, the system generates high-fidelity reaction mappings, highlightin
 <img width="800" height="300" alt="route_2_step_2" src="https://github.com/user-attachments/assets/57f76fdd-954f-4b23-865f-1b0826283e50" />
 
 
-*Fig 4. Detailed Reaction Mapping: Step 2 (Coupling).*
-## 4. Key Technical Innovations
+*Fig 4. Detailed Reaction Mapping: Step 2 (Coupling).*    
+## 4. Another Visual Results and Demonstrations 
+**Target Molecule**: `Ic1ccc(c(c1)F)Nc1c(ccc(c1F)F)C(=O)N1CC(O)(C1)[C@@H]1CCCCN1`
+<img width="400" height="400" alt="target" src="https://github.com/user-attachments/assets/79943cc5-a2d5-411d-abed-a312b8246b88" />
+### 4.1 Executive Summary (Deep Chemical Audit)
+- **Core Skeleton**: Biaryl-amide with fused azabicyclic system
+- **Complexity**: Halogenated aryl rings (I, F), Chiral azabicyclo[2.2.1]heptane, Pyrrolidine moiety, Multiple amide linkages
+- **Strategy**: **Convergent**
+
+### 4.2 Recommended Routes
+#### Route 1 (Score: 8.5/10 - PASS)
+<img width="900" height="300" alt="route_1_overview" src="https://github.com/user-attachments/assets/f630825f-6bec-4ae8-90e6-51cf83def5d3" />
+
+<img width="1000" height="800" alt="route_1_tree" src="https://github.com/user-attachments/assets/fa341cbe-3f39-444a-b529-e2d7d40bce8d" />
+
+
+##### Auditor's Verdict
+- **Critical Issues**: None
+
+##### Detailed Steps
+**Step 1: Nucleophilic Aromatic Substitution**
+- **Reagents**: K2CO3, DMF
+- **Conditions**: 80°C, 12h
+<img width="800" height="300" alt="route_1_step_1" src="https://github.com/user-attachments/assets/90eb17fa-5af5-4f6d-948e-107f1a9761bb" />
+
+
+**Step 2: Amide Coupling**
+- **Reagents**: HATU, DIPEA, DMF
+- **Conditions**: RT, 4h
+<img width="800" height="300" alt="route_1_step_2" src="https://github.com/user-attachments/assets/231282a0-efd7-463f-9e6f-f8b2f87d1f50" />
+
+
+
+#### Route 2 (Score: 7.8/10 - PASS)
+<img width="900" height="300" alt="route_2_overview" src="https://github.com/user-attachments/assets/9a352809-a064-4a63-96d6-e977d797f940" />
+
+
+<img width="1000" height="800" alt="route_2_tree" src="https://github.com/user-attachments/assets/c1b02b47-aa5c-4618-98da-c3bb371c21fc" />
+
+
+##### Auditor's Verdict                  
+- **Critical Issues**: Requires protection/deprotection                
+
+#### Detailed Steps
+**Step 1: Buchwald-Hartwig Coupling**                       
+- **Reagents**: Pd2(dba)3, XPhos, Cs2CO3, Toluene                       
+- **Conditions**: 100°C, 16h                      
+<img width="800" height="300" alt="route_2_step_1" src="https://github.com/user-attachments/assets/16a31cac-823a-4bd3-8752-e9224c3754a6" />
+
+
+
+### 4.3 Recommended Next Steps
+1. Verify availability of Key Starting Materials (KSMs) for Route 1.                          
+2. Run *Conformer Generation* (Module 4) on late-stage intermediates to check steric hindrance.                     
+3. Review safety flags for Scale-up.              
+
+## 5. Key Technical Innovations
 
 *   **Closed-Loop Verification**: Integration with `verify_skill.py` ensures that all RDKit-derived properties (LogP, MW, Fingerprints) are consistent throughout the planning process.
 *   **Persona-Driven Prompting**: Specialized prompts in `prompts_personas.py` reduce hallucination by forcing agents to focus on their specific domain (e.g., the Auditor cannot ignore PG loops).
 *   **Automated Reporting**: The `report_generator.py` compiles JSON audit trails and PNG assets into a single, cohesive Markdown document for peer review.
 
-## 5. Conclusion
+## 6. Conclusion
 
 ChemReact transforms retrosynthesis from a solo "guessing" game into an audited, visual, and documented engineering process. By combining the precision of RDKit with the flexibility of multi-persona LLMs, it offers a scalable solution for early-stage drug discovery and process chemistry.
 

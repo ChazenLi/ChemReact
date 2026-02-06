@@ -110,21 +110,10 @@ A: Current format is route + step list (single-track per route). Multi-step DAG 
 Q: Which file is best for downstream automation?
 A: `run_summary.json` is the canonical machine-readable output.
 
-## Troubleshooting
-
-- Error: `Unexpected UTF-8 BOM`
-  - Rewrite JSON as UTF-8 (without BOM).
-- Error: `Invalid SMILES`
-  - Validate target/precursor SMILES with RDKit first.
-- Missing images in report
-  - Ensure `steps[*].reaction_smiles` or `rxn_smiles`/`smirks` exists in routes.
-- Adapter fails with missing fields
-  - Validate request against `skills/ChemReact/schemas/host_request.schema.json`.
-- RDKit import error
-  - Install RDKit via conda and verify interpreter path is the same one running ChemReact.
 
 ## Versioning and Release
 
 Use semantic versioning (`vMAJOR.MINOR.PATCH`).
 See `skills/ChemReact/RELEASE.md` for tag/release checklist and commands.
+
 

@@ -23,21 +23,30 @@ The system's strength lies in its ability to translate abstract JSON data into i
 ### 3.1 Target Molecule Analysis
 The system identifies the core biphenyl-tetrazole-imidazole scaffold, providing a clean 2D representation for strategic mapping.
 
-![Target Molecule](C:\Users\Windows11\AppData\Roaming\Typora\typora-user-images\image-20260207055422807.png) 
+<img width="400" height="400" alt="target" src="https://github.com/user-attachments/assets/9c853df2-d31c-41f4-bb1b-1ee1241fd8f7" />
+
 *Fig 1. Target Molecule (Losartan) 2D Rendering.*
 
 ### 3.2 Retrosynthesis Tree (The "Tree View")
 A cornerstone of the ChemReact system is the orthogonal tree visualization, which clearly maps the target to its primary precursors, illustrating the convergent nature of the synthesis.
 
-![Retrosynthesis Tree](C:\Users\Windows11\AppData\Roaming\Typora\typora-user-images\image-20260207055444049.png)
-*Fig 2. Route 1: Strategic Disconnection Tree.*
+<img width="1000" height="800" alt="route_1_tree" src="https://github.com/user-attachments/assets/a55bc067-6f43-461a-96f3-2c6a37f1544f" />
+<img width="1100" height="800" alt="route_2_tree" src="https://github.com/user-attachments/assets/072ae0c2-3b4d-4234-998f-5bac2be572c3" />
+*Fig 2. Route 1&2: Strategic Disconnection Tree.*
 
 ### 3.3 Reaction Step Detailing
 For each step, the system generates high-fidelity reaction mappings, highlighting the transformation of functional groups and atomic changes.
 
-![Reaction Step 1](C:\Users\Windows11\AppData\Roaming\Typora\typora-user-images\image-20260207055456567.png)
+<img width="800" height="300" alt="route_1_step_1" src="https://github.com/user-attachments/assets/9f857d75-b280-40fd-8086-3b1ea88207ae" />
+<img width="800" height="300" alt="route_1_step_2" src="https://github.com/user-attachments/assets/d2672520-694f-49e0-8df5-3d77fe06dbcc" />
+
 *Fig 3. Detailed Reaction Mapping: Step 1 (Coupling).*
 
+<img width="800" height="300" alt="route_2_step_1" src="https://github.com/user-attachments/assets/09bc8cd9-4406-4a9d-bc9d-a74ad0dd258a" />
+<img width="800" height="300" alt="route_2_step_2" src="https://github.com/user-attachments/assets/57f76fdd-954f-4b23-865f-1b0826283e50" />
+
+
+*Fig 4. Detailed Reaction Mapping: Step 2 (Coupling).*
 ## 4. Key Technical Innovations
 
 *   **Closed-Loop Verification**: Integration with `verify_skill.py` ensures that all RDKit-derived properties (LogP, MW, Fingerprints) are consistent throughout the planning process.

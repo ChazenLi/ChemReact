@@ -1,0 +1,45 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "HostAdapterRequest",
+  "type": "object",
+  "required": [
+    "target_smiles",
+    "routes_file"
+  ],
+  "properties": {
+    "target_smiles": {
+      "type": "string"
+    },
+    "routes_file": {
+      "type": "string"
+    },
+    "strategy_file": {
+      "type": "string"
+    },
+    "vis_plan_file": {
+      "type": "string"
+    },
+    "output_dir": {
+      "type": "string"
+    },
+    "top_k": {
+      "type": "integer",
+      "minimum": 1,
+      "maximum": 3
+    },
+    "target_legend": {
+      "type": "string"
+    },
+    "force_field": {
+      "type": "string",
+      "enum": [
+        "MMFF",
+        "UFF"
+      ]
+    },
+    "emit_vis_plan_template": {
+      "type": "string"
+    }
+  },
+  "additionalProperties": false
+}

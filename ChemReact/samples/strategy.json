@@ -1,0 +1,10 @@
+{
+  "analysis": {
+    "core_skeleton": "Biaryl-imidazole",
+    "complexity_features": [
+      "Tetrazole",
+      "Biphenyl"
+    ],
+    "strategy_type": "Convergent"
+  }
+}

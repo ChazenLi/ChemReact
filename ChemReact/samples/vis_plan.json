@@ -1,0 +1,39 @@
+{
+  "selected_route_ids": [
+    1
+  ],
+  "target_image": {
+    "legend": "Losartan target with key motif",
+    "highlight_atoms": [
+      2,
+      3,
+      4
+    ]
+  },
+  "routes": [
+    {
+      "route_id": 1,
+      "why_selected": "Best score and low risk",
+      "overview_grid": {
+        "enabled": true,
+        "precursor_legends": [
+          "Part A",
+          "Part B"
+        ]
+      },
+      "tree_view": {
+        "enabled": true,
+        "caption": "Main disconnection"
+      },
+      "step_views": [
+        {
+          "step_index": 1,
+          "caption": "Hydrolysis step"
+        }
+      ]
+    }
+  ],
+  "global_notes": [
+    "Use concise image captions."
+  ]
+}

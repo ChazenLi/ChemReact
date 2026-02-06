@@ -1,0 +1,23 @@
+[
+  {
+    "route_id": 1,
+    "score": 9.0,
+    "audit_verdict": "PASS",
+    "critical_issues": [],
+    "precursors": [
+      "CCCCC1=NC(Cl)=C(CO)N1",
+      "NCC2=CC=C(C3=CC=CC=C3C4=NNN=N4)C=C2"
+    ],
+    "steps": [
+      {
+        "reaction_class": "Hydrolysis",
+        "reagents": [
+          "NaOH",
+          "H2O"
+        ],
+        "conditions": "Reflux, 4h",
+        "reaction_smiles": "[Cl:1][c:2]>>[OH:3][c:2]"
+      }
+    ]
+  }
+]

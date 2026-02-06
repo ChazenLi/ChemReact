@@ -1,0 +1,12 @@
+{
+  "success": true,
+  "mode": "template_only",
+  "outputs": {
+    "vis_plan_template": "E:\\Python\\skills\\ChemReact\\sample_output_template\\vis_plan.template.json",
+    "schemas": {
+      "routes": "E:\\Python\\skills\\ChemReact\\sample_output_template\\schemas\\routes.schema.json",
+      "strategy": "E:\\Python\\skills\\ChemReact\\sample_output_template\\schemas\\strategy.schema.json",
+      "vis_plan": "E:\\Python\\skills\\ChemReact\\sample_output_template\\schemas\\vis_plan.schema.json"
+    }
+  }
+}

@@ -1,0 +1,37 @@
+{
+  "selected_route_ids": [
+    1
+  ],
+  "target_image": {
+    "legend": "Target with key motif",
+    "highlight_atoms": []
+  },
+  "routes": [
+    {
+      "route_id": 1,
+      "why_selected": "Best score/risk balance",
+      "overview_grid": {
+        "enabled": true,
+        "precursor_legends": [
+          "Fragment A",
+          "Fragment B"
+        ]
+      },
+      "tree_view": {
+        "enabled": true,
+        "caption": "Main strategic disconnection"
+      },
+      "step_views": [
+        {
+          "step_index": 1,
+          "caption": "Key bond-forming step"
+        }
+      ],
+      "focus_molecules": []
+    }
+  ],
+  "global_notes": [
+    "Use concise captions.",
+    "Mark high-risk steps clearly."
+  ]
+}

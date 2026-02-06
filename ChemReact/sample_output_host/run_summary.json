@@ -1,0 +1,72 @@
+{
+  "success": true,
+  "target_smiles": "CCCCC1=NC(Cl)=C(CO)N1CC2=CC=C(C3=CC=CC=C3C4=NNN=N4)C=C2",
+  "selected_route_ids": [
+    1
+  ],
+  "outputs": {
+    "report": "E:\\Python\\skills\\ChemReact\\sample_output_host\\RETRO_REPORT.md",
+    "visualization_prompt": "E:\\Python\\skills\\ChemReact\\sample_output_host\\visualization_prompt.txt",
+    "vis_plan_template": "E:\\Python\\skills\\ChemReact\\sample_output_host\\vis_plan.template.json",
+    "schemas": {
+      "routes": "E:\\Python\\skills\\ChemReact\\sample_output_host\\schemas\\routes.schema.json",
+      "strategy": "E:\\Python\\skills\\ChemReact\\sample_output_host\\schemas\\strategy.schema.json",
+      "vis_plan": "E:\\Python\\skills\\ChemReact\\sample_output_host\\schemas\\vis_plan.schema.json"
+    },
+    "image_paths": {
+      "target_image": "images/target.png",
+      "route_1_overview": "images/route_1_overview.png",
+      "route_1_tree": "images/route_1_tree.png",
+      "route_1_step_1": "images/route_1_step_1.png"
+    }
+  },
+  "rdkit": {
+    "structure": {
+      "input_smiles": "CCCCC1=NC(Cl)=C(CO)N1CC2=CC=C(C3=CC=CC=C3C4=NNN=N4)C=C2",
+      "success": true,
+      "error": null,
+      "properties": {
+        "canonical_smiles": "CCCCc1nc(Cl)c(CO)n1Cc1ccc(-c2ccccc2-c2nn[nH]n2)cc1",
+        "formula": "C22H23ClN6O",
+        "molecular_weight": 422.9200000000001,
+        "formal_charge": 0,
+        "num_atoms": 30,
+        "num_bonds": 33,
+        "chiral_centers": [],
+        "stereochemistry_valid": "No stereocenters"
+      }
+    },
+    "features": {
+      "input_smiles": "CCCCC1=NC(Cl)=C(CO)N1CC2=CC=C(C3=CC=CC=C3C4=NNN=N4)C=C2",
+      "success": true,
+      "error": null,
+      "synthesis_critical": {
+        "MolWt": 422.9200000000001,
+        "TPSA": 92.51,
+        "H_Bond_Donors": 2,
+        "H_Bond_Acceptors": 6
+      },
+      "metadata": {
+        "synthesis_critical": "Key properties for synthesis and retrosynthesis.",
+        "supplementary": "Additional descriptors (LogP, QED, Atomic Features) less critical for initial planning."
+      },
+      "supplementary": {
+        "LogP": 4.2668000000000035,
+        "Rotatable_Bonds": 8,
+        "QED": 0.44208017823980256,
+        "topological_descriptors": {
+          "BertzCT": 1105.3755176033308,
+          "BalabanJ": 1.6211679783418804,
+          "HallKierAlpha": -3.03,
+          "Chi0": 20.924074484064484,
+          "Number_of_Rings": 4
+        }
+      }
+    },
+    "conformer": {
+      "success": true,
+      "force_field": "MMFF",
+      "final_energy": 58.21576872601441
+    }
+  }
+}

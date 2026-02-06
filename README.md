@@ -58,6 +58,6 @@ For each step, the system generates high-fidelity reaction mappings, highlightin
 ChemReact transforms retrosynthesis from a solo "guessing" game into an audited, visual, and documented engineering process. By combining the precision of RDKit with the flexibility of multi-persona LLMs, it offers a scalable solution for early-stage drug discovery and process chemistry.
 
 ---
-**Released Version**: v0.1.0      
+**Released Version**: v0.1.0      the multi-step skill is coming
 [PROJECT_REPORT.pdf](https://github.com/user-attachments/files/25139404/PROJECT_REPORT.pdf)
 

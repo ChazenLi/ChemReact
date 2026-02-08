@@ -7,6 +7,7 @@
     "required": ["route_id", "score", "audit_verdict", "critical_issues", "steps"],
     "properties": {
       "route_id": {"type": "integer"},
+      "synthesis_style": {"type": "string", "enum": ["linear", "convergent"]},
       "score": {"type": "number"},
       "audit_verdict": {"type": "string"},
       "critical_issues": {"type": "array", "items": {"type": "string"}},

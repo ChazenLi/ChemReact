@@ -1,4 +1,4 @@
-﻿{
+{
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "title": "StrategyAnalysis",
   "type": "object",
@@ -8,7 +8,18 @@
       "properties": {
         "core_skeleton": {"type": "string"},
         "complexity_features": {"type": "array", "items": {"type": "string"}},
-        "strategy_type": {"type": "string"}
+        "strategy_type": {"type": "string"},
+        "key_disconnections": {"type": "array", "items": {"type": "string"}},
+        "global_constraints": {"type": "array", "items": {"type": "string"}},
+        "risk_budget": {
+          "type": "object",
+          "properties": {
+            "max_hard_issues": {"type": "integer", "minimum": 0},
+            "max_soft_issues": {"type": "integer", "minimum": 0},
+            "min_quality_score": {"type": "number", "minimum": 0, "maximum": 10}
+          },
+          "additionalProperties": true
+        }
       },
       "additionalProperties": true
     }

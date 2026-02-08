@@ -1,0 +1,12 @@
+﻿{
+  "target_smiles": "__REPLACE_WITH_TARGET_SMILES__",
+  "target_legend": "Execution rule: analyze target chemistry first, then plan routes",
+  "auto_propose_routes": true,
+  "planner_backend": "host",
+  "auto_propose_max_routes": 5,
+  "planner_auto_repair": true,
+  "planner_max_iterations": 5,
+  "strict_audit": true,
+  "host_planner_command": "__HOST_REAL_PLANNER_COMMAND__ --prompt-file {prompt_file} --output-file {output_file} --request-file {request_file} --stage {stage} --round {round}",
+  "output_dir": "../../../outputs/retro_final_v2/report"
+}

@@ -1,14 +1,12 @@
 ﻿{
   "target_smiles": "__REPLACE_WITH_TARGET_SMILES__",
-  "routes_file": "routes.json",
-  "strategy_file": "strategy.json",
-  "vis_plan_file": "vis_plan.json",
-  "output_dir": "../sample_output_host",
-  "top_k": 2,
-  "force_field": "MMFF",
   "target_legend": "Execution rule: analyze target chemistry first, then plan routes",
+  "auto_propose_routes": true,
+  "planner_backend": "host",
+  "auto_propose_max_routes": 5,
+  "planner_auto_repair": true,
+  "planner_max_iterations": 5,
   "host_planner_command": "__HOST_REAL_PLANNER_COMMAND__ --prompt-file {prompt_file} --output-file {output_file} --request-file {request_file} --stage {stage} --round {round}",
   "strict_audit": true,
-  "planner_auto_repair": true,
-  "planner_max_iterations": 5
+  "output_dir": "../sample_output_host_planner"
 }

@@ -1,39 +1,61 @@
 {
   "selected_route_ids": [
-    1
+    1,
+    2
   ],
   "target_image": {
-    "legend": "Losartan target with key motif",
+    "legend": "Ethanol target",
     "highlight_atoms": [
-      2,
-      3,
-      4
+      0,
+      1,
+      2
     ]
   },
   "routes": [
     {
       "route_id": 1,
-      "why_selected": "Best score and low risk",
+      "why_selected": "Chemically plausible substitution route",
       "overview_grid": {
         "enabled": true,
         "precursor_legends": [
-          "Part A",
-          "Part B"
+          "Bromoethane",
+          "Hydroxide"
         ]
       },
       "tree_view": {
         "enabled": true,
-        "caption": "Main disconnection"
+        "caption": "Single-step substitution disconnection"
       },
       "step_views": [
         {
           "step_index": 1,
-          "caption": "Hydrolysis step"
+          "caption": "SN2 substitution"
+        }
+      ]
+    },
+    {
+      "route_id": 2,
+      "why_selected": "Negative-control invalid route",
+      "overview_grid": {
+        "enabled": true,
+        "precursor_legends": [
+          "Ethanol"
+        ]
+      },
+      "tree_view": {
+        "enabled": true,
+        "caption": "Invalid demonstration route"
+      },
+      "step_views": [
+        {
+          "step_index": 1,
+          "caption": "Invalid atom transformation"
         }
       ]
     }
   ],
   "global_notes": [
-    "Use concise image captions."
+    "Route 1 is expected to survive strict gate.",
+    "Route 2 is expected to be rejected by strict gate."
   ]
 }

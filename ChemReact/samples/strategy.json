@@ -1,10 +1,22 @@
 {
   "analysis": {
-    "core_skeleton": "Biaryl-imidazole",
+    "core_skeleton": "C2 alcohol",
     "complexity_features": [
-      "Tetrazole",
-      "Biphenyl"
+      "Primary alcohol",
+      "Small aliphatic chain"
     ],
-    "strategy_type": "Convergent"
+    "strategy_type": "Linear",
+    "key_disconnections": [
+      "Nucleophilic Substitution"
+    ],
+    "global_constraints": [
+      "Preserve C2 backbone",
+      "Avoid elimination side pathway"
+    ],
+    "risk_budget": {
+      "max_hard_issues": 0,
+      "max_soft_issues": 5,
+      "min_quality_score": 6.0
+    }
   }
 }

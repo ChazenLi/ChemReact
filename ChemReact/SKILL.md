@@ -1,62 +1,62 @@
----
-name: chemreact
-description: Integrate RDKit analysis and retrosynthesis visualization into an executable closed loop. Use when the user needs one skill that consumes target SMILES plus route/audit JSON, generates visualization assets and markdown report, and can be plugged into host LLM tools such as Claude Code, OpenCode, and Cursor.
----
+﻿# ChemReact Skill
 
-# ChemReact
+ChemReact is a strict retrosynthesis closed-loop skill for host software (`OpenCode` / `ClaudeCode` / `Cursor`).
 
-Execute a deterministic self-contained pipeline:
-1. Validate and profile target molecule.
-2. Build a visualization plan prompt for post-route-design rendering.
-3. Render route assets (target, step, grid, tree).
-4. Generate a markdown report and run summary JSON.
+## Positioning
+- Input: target molecule (`target_smiles`).
+- Execution: host runs a real configured `host_planner_command`.
+- Process: tool-based chemistry analysis -> planner generation -> strict audit -> repair loop -> report/visualization.
+- Output: traceable structured artifacts for both machine and human review.
 
-## Required Inputs
+## Required Execution Order
+1. Analyze target chemistry first (structure/features/functional groups/ring topology).
+2. Build planner request with structured chemistry context.
+3. Run planner invocation via `host_planner_command`.
+4. Run strict audit and repair loop (up to max iterations).
+5. Always output report and visualizations; if max repair limit is reached, include both PASS and REJECT routes.
 
-- `target_smiles`: target molecule SMILES.
-- `routes_file`: audited routes JSON array.
+## Input Contract
+- `target_smiles`
+- `output_dir`
+- `host_planner_command` (or `CHEMREACT_HOST_PLANNER_COMMAND`)
 
-## Optional Inputs
+## Host Command Contract
+`host_planner_command` must:
+- be real (no placeholder/fallback/mock)
+- include placeholders:
+  - `{prompt_file}`
+  - `{output_file}`
+  - `{request_file}`
+  - `{stage}`
+  - `{round}`
+- be executable by host integration as one complete command string
 
-- `strategy_file`: strategy analysis JSON.
-- `vis_plan_file`: visualization plan JSON produced by LLM.
-- `output_dir`: output directory.
-- `top_k`: fallback route count when no visualization plan is provided.
-- `emit_vis_plan_template`: output path for visualization plan template JSON.
+## Forbidden Assistant Output
+Do not output:
+- "Let me check available planner options"
+- provider/API option menus
+- API-key setup detours
+- fallback experiments in strict mode
 
-## Execute
+Required behavior:
+- Execute the configured command path and continue strict loop execution.
 
-Run:
-
+## Single Command Entry
 ```bash
-python skills/ChemReact/scripts/run_closed_loop.py \
-  --target-smiles "CCO" \
-  --routes-file path/to/audited_routes.json \
-  --strategy-file path/to/strategy.json \
-  --output-dir out
+python skills/ChemReact/scripts/run_strict_workflow.py --target-smiles "<TARGET_SMILES>" --output-dir "<OUTPUT_DIR>"
 ```
 
-If `vis_plan_file` is omitted, use score-based fallback selection.
+## Completion Criteria
+Required artifacts:
+- `<OUTPUT_DIR>/RETRO_REPORT.md`
+- `<OUTPUT_DIR>/run_summary.json`
+- `<OUTPUT_DIR>/images/route_*_overview.png`
+- `<OUTPUT_DIR>/images/route_*_tree.png`
 
-Generate only contracts/template:
-
-```bash
-python skills/ChemReact/scripts/run_closed_loop.py \
-  --output-dir out \
-  --emit-vis-plan-template-only
-```
-
-## Outputs
-
-- `run_summary.json`: machine-readable pipeline result.
-- `visualization_prompt.txt`: prompt for Visualization Specialist persona.
-- `vis_plan.template.json`: strict template for host LLM to fill.
-- `schemas/*.schema.json`: machine-checkable input contracts.
-- `RETRO_REPORT.md`: final report.
-- `images/*.png`: generated route images.
-
-## Host Integration
-
-- Read `references/host-integration.md` to wire this skill into Claude Code/OpenCode/Cursor workflows.
-- Read `references/data-contract.md` for strict input JSON contracts.
-
+## Key Summary Fields
+- `planner_loop.rounds`
+- `planner_loop.max_iterations`
+- `planner_loop.termination_reason`
+- `planner_loop.reached_repair_limit`
+- `audit.recommended_routes`
+- `audit.rejected_routes`

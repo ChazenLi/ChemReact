@@ -1,0 +1,553 @@
+﻿[
+  {
+    "id": "esterification",
+    "name": "Esterification",
+    "reactant_smarts": [
+      "[CX3](=O)[OX2H1]",
+      "[OX2H][#6]"
+    ],
+    "product_smarts": [
+      "[CX3](=O)[OX2][#6]"
+    ],
+    "keywords": [
+      "ester",
+      "fischer",
+      "esterification",
+      "acylation"
+    ],
+    "byproducts": [
+      {
+        "smiles": "O",
+        "weight": 1.0
+      }
+    ]
+  },
+  {
+    "id": "amidation",
+    "name": "Amidation",
+    "reactant_smarts": [
+      "[NX3;H2,H1;!$(NC=O)]",
+      "[CX3](=O)[OX2H1]"
+    ],
+    "product_smarts": [
+      "[CX3](=O)[NX3]"
+    ],
+    "keywords": [
+      "amide",
+      "amidation",
+      "coupling",
+      "peptide"
+    ],
+    "byproducts": [
+      {
+        "smiles": "O",
+        "weight": 1.0
+      }
+    ]
+  },
+  {
+    "id": "acid_chloride_substitution",
+    "name": "Acid Chloride Substitution",
+    "reactant_smarts": [
+      "[CX3](=O)Cl",
+      "[NX3;H2,H1;!$(NC=O)]"
+    ],
+    "product_smarts": [
+      "[CX3](=O)[NX3]"
+    ],
+    "keywords": [
+      "acid chloride",
+      "acyl chloride",
+      "schotten",
+      "baumann"
+    ],
+    "byproducts": [
+      {
+        "smiles": "Cl",
+        "weight": 0.9
+      }
+    ]
+  },
+  {
+    "id": "aminolysis_transesterification",
+    "name": "Aminolysis/Transesterification",
+    "reactant_smarts": [
+      "[CX3](=O)[OX2][#6]",
+      "[NX3;H2,H1;!$(NC=O)]"
+    ],
+    "product_smarts": [
+      "[CX3](=O)[NX3]"
+    ],
+    "keywords": [
+      "aminolysis",
+      "transester",
+      "transesterification"
+    ],
+    "byproducts": [
+      {
+        "smiles": "CO",
+        "weight": 0.7
+      },
+      {
+        "smiles": "CCO",
+        "weight": 0.7
+      }
+    ]
+  },
+  {
+    "id": "suzuki_coupling",
+    "name": "Suzuki Coupling",
+    "reactant_smarts": [
+      "[#6][B]([OX2])([OX2])",
+      "[#6][Br,I,Cl]"
+    ],
+    "product_smarts": [
+      "[#6]-[#6]"
+    ],
+    "keywords": [
+      "suzuki",
+      "cross-coupling",
+      "miyaura",
+      "palladium"
+    ],
+    "byproducts": [
+      {
+        "smiles": "B(O)(O)O",
+        "weight": 0.8
+      },
+      {
+        "smiles": "[Br-]",
+        "weight": 0.7
+      },
+      {
+        "smiles": "[I-]",
+        "weight": 0.7
+      }
+    ]
+  },
+  {
+    "id": "buchwald_hartwig",
+    "name": "Buchwald-Hartwig Amination",
+    "reactant_smarts": [
+      "[#6][Br,I,Cl]",
+      "[NX3;H2,H1]"
+    ],
+    "product_smarts": [
+      "[#6][NX3]"
+    ],
+    "keywords": [
+      "buchwald",
+      "hartwig",
+      "amination",
+      "palladium",
+      "c-n coupling"
+    ],
+    "byproducts": [
+      {
+        "smiles": "[Br-]",
+        "weight": 0.8
+      },
+      {
+        "smiles": "[I-]",
+        "weight": 0.8
+      }
+    ]
+  },
+  {
+    "id": "sn2_substitution",
+    "name": "SN2 Nucleophilic Substitution",
+    "reactant_smarts": [
+      "[CX4][Br,Cl,I]",
+      "[O-,N-,S-]"
+    ],
+    "product_smarts": [
+      "[CX4][O,N,S]"
+    ],
+    "keywords": [
+      "sn2",
+      "nucleophilic substitution",
+      "displacement",
+      "williamson"
+    ],
+    "byproducts": [
+      {
+        "smiles": "[Br-]",
+        "weight": 0.9
+      },
+      {
+        "smiles": "[Cl-]",
+        "weight": 0.9
+      },
+      {
+        "smiles": "[I-]",
+        "weight": 0.9
+      }
+    ]
+  },
+  {
+    "id": "alcohol_oxidation",
+    "name": "Alcohol Oxidation",
+    "reactant_smarts": [
+      "[OX2H][CX4]"
+    ],
+    "product_smarts": [
+      "[CX3](=O)",
+      "[CX3](=O)[OX2H1]"
+    ],
+    "keywords": [
+      "oxidation",
+      "swern",
+      "dess-martin",
+      "jones",
+      "pcc",
+      "tempo"
+    ],
+    "byproducts": []
+  },
+  {
+    "id": "carbonyl_reduction",
+    "name": "Carbonyl Reduction",
+    "reactant_smarts": [
+      "[CX3](=O)[#6]"
+    ],
+    "product_smarts": [
+      "[OX2H][CX4]"
+    ],
+    "keywords": [
+      "reduction",
+      "nabh4",
+      "lialh4",
+      "borohydride",
+      "hydride"
+    ],
+    "byproducts": []
+  },
+  {
+    "id": "nitro_reduction",
+    "name": "Nitro Reduction",
+    "reactant_smarts": [
+      "[NX3+](=O)[O-]"
+    ],
+    "product_smarts": [
+      "[NX3;H2]"
+    ],
+    "keywords": [
+      "nitro reduction",
+      "hydrogenation",
+      "iron",
+      "tin",
+      "amine"
+    ],
+    "byproducts": [
+      {
+        "smiles": "O",
+        "weight": 0.9
+      }
+    ]
+  },
+  {
+    "id": "grignard_addition",
+    "name": "Grignard Addition",
+    "reactant_smarts": [
+      "[CX3](=O)",
+      "[#6][Mg]"
+    ],
+    "product_smarts": [
+      "[OX2H][CX4]"
+    ],
+    "keywords": [
+      "grignard",
+      "organomagnesium",
+      "addition"
+    ],
+    "byproducts": []
+  },
+  {
+    "id": "wittig_reaction",
+    "name": "Wittig Reaction",
+    "reactant_smarts": [
+      "[CX3](=O)",
+      "[P+]"
+    ],
+    "product_smarts": [
+      "[CX3]=[CX3]"
+    ],
+    "keywords": [
+      "wittig",
+      "olefination",
+      "phosphonium",
+      "ylide"
+    ],
+    "byproducts": [
+      {
+        "smiles": "O=P(c1ccccc1)(c1ccccc1)c1ccccc1",
+        "weight": 0.8
+      }
+    ]
+  },
+  {
+    "id": "aldol_condensation",
+    "name": "Aldol Condensation",
+    "reactant_smarts": [
+      "[CX3](=O)[CX4H]",
+      "[CX3H1](=O)"
+    ],
+    "product_smarts": [
+      "[CX3](=O)[CX4][CX4]([OX2H])"
+    ],
+    "keywords": [
+      "aldol",
+      "condensation",
+      "claisen-schmidt",
+      "enolate"
+    ],
+    "byproducts": [
+      {
+        "smiles": "O",
+        "weight": 0.7
+      }
+    ]
+  },
+  {
+    "id": "diels_alder",
+    "name": "Diels-Alder Cycloaddition",
+    "reactant_smarts": [
+      "[CX3]=[CX3]-[CX3]=[CX3]",
+      "[CX3]=[CX3]"
+    ],
+    "product_smarts": [
+      "[#6]1[#6][#6][#6][#6][#6]1"
+    ],
+    "keywords": [
+      "diels-alder",
+      "cycloaddition",
+      "diene",
+      "dienophile",
+      "4+2"
+    ],
+    "byproducts": []
+  },
+  {
+    "id": "heck_reaction",
+    "name": "Heck Reaction",
+    "reactant_smarts": [
+      "[#6][Br,I]",
+      "[CX3]=[CX3]"
+    ],
+    "product_smarts": [
+      "[#6][CX3]=[CX3]"
+    ],
+    "keywords": [
+      "heck",
+      "mizoroki",
+      "palladium",
+      "olefin"
+    ],
+    "byproducts": [
+      {
+        "smiles": "[Br-]",
+        "weight": 0.8
+      }
+    ]
+  },
+  {
+    "id": "sonogashira_coupling",
+    "name": "Sonogashira Coupling",
+    "reactant_smarts": [
+      "[#6][Br,I]",
+      "[CX2]#[CX2H]"
+    ],
+    "product_smarts": [
+      "[#6][CX2]#[CX2]"
+    ],
+    "keywords": [
+      "sonogashira",
+      "alkyne",
+      "palladium",
+      "copper"
+    ],
+    "byproducts": [
+      {
+        "smiles": "[Br-]",
+        "weight": 0.8
+      }
+    ]
+  },
+  {
+    "id": "boc_protection",
+    "name": "Boc Protection",
+    "reactant_smarts": [
+      "[NX3;H2,H1]",
+      "[CX3](=O)OC(C)(C)C"
+    ],
+    "product_smarts": [
+      "[NX3][CX3](=O)OC(C)(C)C"
+    ],
+    "keywords": [
+      "boc",
+      "protection",
+      "di-tert-butyl",
+      "carbamate"
+    ],
+    "byproducts": [
+      {
+        "smiles": "O=C=O",
+        "weight": 0.8
+      }
+    ]
+  },
+  {
+    "id": "boc_deprotection",
+    "name": "Boc Deprotection",
+    "reactant_smarts": [
+      "[NX3][CX3](=O)OC(C)(C)C"
+    ],
+    "product_smarts": [
+      "[NX3;H2,H1]"
+    ],
+    "keywords": [
+      "boc deprotection",
+      "tfa",
+      "hcl",
+      "deprotection"
+    ],
+    "byproducts": [
+      {
+        "smiles": "CC(C)(C)O",
+        "weight": 0.8
+      },
+      {
+        "smiles": "O=C=O",
+        "weight": 0.8
+      }
+    ]
+  },
+  {
+    "id": "cbz_protection",
+    "name": "Cbz Protection",
+    "reactant_smarts": [
+      "[NX3;H2,H1]"
+    ],
+    "product_smarts": [
+      "[NX3][CX3](=O)OCc1ccccc1"
+    ],
+    "keywords": [
+      "cbz",
+      "benzyloxycarbonyl",
+      "protection",
+      "z-group"
+    ],
+    "byproducts": []
+  },
+  {
+    "id": "hydrogenation",
+    "name": "Catalytic Hydrogenation",
+    "reactant_smarts": [
+      "[CX3]=[CX3]",
+      "[CX2]#[CX2]"
+    ],
+    "product_smarts": [
+      "[CX4][CX4]"
+    ],
+    "keywords": [
+      "hydrogenation",
+      "palladium",
+      "platinum",
+      "h2",
+      "catalyst"
+    ],
+    "byproducts": []
+  },
+  {
+    "id": "epoxidation",
+    "name": "Epoxidation",
+    "reactant_smarts": [
+      "[CX3]=[CX3]"
+    ],
+    "product_smarts": [
+      "[CX4]1[OX2][CX4]1"
+    ],
+    "keywords": [
+      "epoxidation",
+      "mcpba",
+      "peroxide",
+      "sharpless",
+      "epoxide"
+    ],
+    "byproducts": [
+      {
+        "smiles": "Cc1ccc(C(=O)O)cc1",
+        "weight": 0.7
+      }
+    ]
+  },
+  {
+    "id": "reductive_amination",
+    "name": "Reductive Amination",
+    "reactant_smarts": [
+      "[CX3](=O)",
+      "[NX3;H2,H1]"
+    ],
+    "product_smarts": [
+      "[CX4][NX3]"
+    ],
+    "keywords": [
+      "reductive amination",
+      "imine",
+      "nabh3cn",
+      "nabh(oac)3"
+    ],
+    "byproducts": [
+      {
+        "smiles": "O",
+        "weight": 0.9
+      }
+    ]
+  },
+  {
+    "id": "friedel_crafts_alkylation",
+    "name": "Friedel-Crafts Alkylation",
+    "reactant_smarts": [
+      "c1ccccc1",
+      "[CX4][Cl,Br]"
+    ],
+    "product_smarts": [
+      "c1ccc([CX4])cc1"
+    ],
+    "keywords": [
+      "friedel-crafts",
+      "alkylation",
+      "alcl3",
+      "lewis acid"
+    ],
+    "byproducts": [
+      {
+        "smiles": "[Cl-]",
+        "weight": 0.8
+      }
+    ]
+  },
+  {
+    "id": "friedel_crafts_acylation",
+    "name": "Friedel-Crafts Acylation",
+    "reactant_smarts": [
+      "c1ccccc1",
+      "[CX3](=O)Cl"
+    ],
+    "product_smarts": [
+      "c1ccc([CX3](=O))cc1"
+    ],
+    "keywords": [
+      "friedel-crafts",
+      "acylation",
+      "ketone",
+      "alcl3"
+    ],
+    "byproducts": [
+      {
+        "smiles": "[Cl-]",
+        "weight": 0.8
+      }
+    ]
+  }
+]

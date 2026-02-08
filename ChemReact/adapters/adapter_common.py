@@ -15,15 +15,15 @@ def _load_request(path: str) -> Dict[str, Any]:
 
 
 def _validate_request(payload: Dict[str, Any]) -> None:
-    required = {
-        "target_smiles": str,
-        "routes_file": str,
-    }
-    for key, typ in required.items():
-        if key not in payload:
-            raise ValueError(f"request missing required field: {key}")
-        if not isinstance(payload[key], typ):
-            raise ValueError(f"request field {key} must be {typ.__name__}")
+    if "target_smiles" not in payload:
+        raise ValueError("request missing required field: target_smiles")
+    if not isinstance(payload["target_smiles"], str):
+        raise ValueError("request field target_smiles must be str")
+
+    has_routes_file = isinstance(payload.get("routes_file"), str) and bool(payload.get("routes_file"))
+    auto_propose = bool(payload.get("auto_propose_routes"))
+    if not has_routes_file and not auto_propose:
+        raise ValueError("request must provide routes_file or set auto_propose_routes=true")
     optional_types = {
         "strategy_file": str,
         "vis_plan_file": str,
@@ -32,10 +32,28 @@ def _validate_request(payload: Dict[str, Any]) -> None:
         "target_legend": str,
         "force_field": str,
         "emit_vis_plan_template": str,
+        "planner_backend": str,
+        "planner_routes_file": str,
+        "auto_propose_routes": bool,
+        "auto_propose_max_routes": int,
+        "planner_request_only": bool,
+        "strict_audit": bool,
+        "planner_auto_repair": bool,
+        "planner_max_iterations": int,
+        "host_planner_command": str,
     }
     for key, typ in optional_types.items():
         if key in payload and payload[key] is not None and not isinstance(payload[key], typ):
             raise ValueError(f"request field {key} must be {typ.__name__}")
+    planner_backend = payload.get("planner_backend")
+    if planner_backend is not None and planner_backend != "host":
+        raise ValueError("request field planner_backend must be 'host'")
+    auto_max = payload.get("auto_propose_max_routes")
+    if auto_max is not None and not (3 <= auto_max <= 5):
+        raise ValueError("request field auto_propose_max_routes must be in [3, 5]")
+    planner_iters = payload.get("planner_max_iterations")
+    if planner_iters is not None and not (1 <= planner_iters <= 5):
+        raise ValueError("request field planner_max_iterations must be in [1, 5]")
 
 
 def _resolve_path(request_file: Path, value: str) -> str:
@@ -53,11 +71,11 @@ def _build_command(run_script: Path, request_file: Path, payload: Dict[str, Any]
         str(run_script),
         "--target-smiles",
         payload["target_smiles"],
-        "--routes-file",
-        _resolve_path(request_file, payload["routes_file"]),
         "--output-dir",
         output_dir,
     ]
+    if payload.get("routes_file"):
+        cmd.extend(["--routes-file", _resolve_path(request_file, payload["routes_file"])])
     if payload.get("strategy_file"):
         cmd.extend(["--strategy-file", _resolve_path(request_file, payload["strategy_file"])])
     if payload.get("vis_plan_file"):
@@ -70,6 +88,24 @@ def _build_command(run_script: Path, request_file: Path, payload: Dict[str, Any]
         cmd.extend(["--force-field", payload["force_field"]])
     if payload.get("emit_vis_plan_template"):
         cmd.extend(["--emit-vis-plan-template", _resolve_path(request_file, payload["emit_vis_plan_template"])])
+    if payload.get("auto_propose_routes"):
+        cmd.append("--auto-propose-routes")
+    if payload.get("planner_backend"):
+        cmd.extend(["--planner-backend", payload["planner_backend"]])
+    if payload.get("auto_propose_max_routes") is not None:
+        cmd.extend(["--auto-propose-max-routes", str(payload["auto_propose_max_routes"])])
+    if payload.get("planner_routes_file"):
+        cmd.extend(["--planner-routes-file", _resolve_path(request_file, payload["planner_routes_file"])])
+    if payload.get("planner_request_only"):
+        cmd.append("--planner-request-only")
+    if payload.get("strict_audit"):
+        cmd.append("--strict-audit")
+    if payload.get("planner_auto_repair"):
+        cmd.append("--planner-auto-repair")
+    if payload.get("planner_max_iterations") is not None:
+        cmd.extend(["--planner-max-iterations", str(payload["planner_max_iterations"])])
+    if payload.get("host_planner_command"):
+        cmd.extend(["--host-planner-command", payload["host_planner_command"]])
     return cmd
 
 

@@ -1,0 +1,59 @@
+﻿{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "VisualizationPlan",
+  "type": "object",
+  "properties": {
+    "selected_route_ids": {"type": "array", "items": {"type": "integer"}},
+    "target_image": {
+      "type": "object",
+      "properties": {
+        "legend": {"type": "string"},
+        "highlight_atoms": {"type": "array", "items": {"type": "integer"}}
+      },
+      "additionalProperties": true
+    },
+    "routes": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["route_id"],
+        "properties": {
+          "route_id": {"type": "integer"},
+          "why_selected": {"type": "string"},
+          "overview_grid": {
+            "type": "object",
+            "properties": {
+              "enabled": {"type": "boolean"},
+              "precursor_legends": {"type": "array", "items": {"type": "string"}}
+            },
+            "additionalProperties": true
+          },
+          "tree_view": {
+            "type": "object",
+            "properties": {
+              "enabled": {"type": "boolean"},
+              "caption": {"type": "string"}
+            },
+            "additionalProperties": true
+          },
+          "step_views": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "required": ["step_index"],
+              "properties": {
+                "step_index": {"type": "integer"},
+                "caption": {"type": "string"}
+              },
+              "additionalProperties": true
+            }
+          },
+          "focus_molecules": {"type": "array", "items": {"type": "object"}}
+        },
+        "additionalProperties": true
+      }
+    },
+    "global_notes": {"type": "array", "items": {"type": "string"}}
+  },
+  "additionalProperties": true
+}

@@ -1,0 +1,90 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "HostAdapterRequest",
+  "type": "object",
+  "required": [
+    "target_smiles"
+  ],
+  "anyOf": [
+    {
+      "required": ["routes_file"]
+    },
+    {
+      "required": ["auto_propose_routes"],
+      "properties": {
+        "auto_propose_routes": { "const": true }
+      }
+    }
+  ],
+  "properties": {
+    "target_smiles": {
+      "type": "string"
+    },
+    "routes_file": {
+      "type": "string"
+    },
+    "strategy_file": {
+      "type": "string"
+    },
+    "vis_plan_file": {
+      "type": "string"
+    },
+    "output_dir": {
+      "type": "string"
+    },
+    "top_k": {
+      "type": "integer",
+      "minimum": 1,
+      "maximum": 3
+    },
+    "target_legend": {
+      "type": "string"
+    },
+    "force_field": {
+      "type": "string",
+      "enum": [
+        "MMFF",
+        "UFF"
+      ]
+    },
+    "emit_vis_plan_template": {
+      "type": "string"
+    },
+    "auto_propose_routes": {
+      "type": "boolean"
+    },
+    "planner_backend": {
+      "type": "string",
+      "enum": ["host"]
+    },
+    "auto_propose_max_routes": {
+      "type": "integer",
+      "minimum": 3,
+      "maximum": 5
+    },
+    "planner_routes_file": {
+      "type": "string"
+    },
+    "planner_request_only": {
+      "type": "boolean"
+    },
+    "strict_audit": {
+      "type": "boolean"
+    },
+    "planner_auto_repair": {
+      "type": "boolean"
+    },
+    "planner_max_iterations": {
+      "type": "integer",
+      "minimum": 1,
+      "maximum": 5,
+      "default": 5,
+      "description": "Maximum planner repair attempts (v3 contract hard-cap: 5)."
+    },
+    "host_planner_command": {
+      "type": "string",
+      "description": "Required for uninterrupted planner_auto_repair loop; must include placeholders: {prompt_file} {output_file} {request_file} {stage} {round}. Must be a real host planner command (placeholder/fallback commands are invalid in strict mode)."
+    }
+  },
+  "additionalProperties": false
+}

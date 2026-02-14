@@ -1,0 +1,8 @@
+Pillow>=10.0.0
+rdkit-pypi>=2022.9.5
+
+# Atom mapping
+rxnmapper>=0.4.0
+
+# Property-based testing
+hypothesis>=6.0.0

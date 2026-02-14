@@ -1,0 +1,63 @@
+"""
+Analyze Scaffold Skill
+======================
+
+Thin skill wrapper around :func:`tools.guidance.strategy_advisor.analyze_scaffold`.
+Accepts a SMILES string, delegates to the tool module, and returns
+a :class:`SkillResult` envelope.
+"""
+
+from __future__ import annotations
+
+import logging
+from typing import Any, Dict
+
+from tools.skills.base import BaseSkill, SkillResult
+
+logger = logging.getLogger(__name__)
+
+
+class AnalyzeScaffoldSkill(BaseSkill):
+    """Analyze molecular scaffold for strategic disconnections and ring systems.
+
+    Delegates to :func:`tools.guidance.strategy_advisor.analyze_scaffold`.
+    """
+
+    name = "analyze_scaffold"
+    description = "Analyze molecular scaffold for strategic disconnections and ring systems"
+
+    def execute(self, args: Any) -> Dict[str, Any]:
+        """Run scaffold analysis and return a SkillResult dict.
+
+        Args:
+            args: dict with ``smiles`` key, or any object with a ``.smiles`` attribute.
+
+        Returns:
+            ``SkillResult.to_dict()`` with scaffold analysis nested under ``data``.
+        """
+        smiles = _extract_smiles(args)
+        if smiles is None:
+            return SkillResult(
+                success=False, error="args must contain 'smiles'"
+            ).to_dict()
+
+        try:
+            from tools.guidance.strategy_advisor import analyze_scaffold
+
+            result = analyze_scaffold(smiles)
+        except Exception as exc:
+            logger.exception("analyze_scaffold failed")
+            return SkillResult(success=False, error=str(exc)).to_dict()
+
+        success = result.get("success", False) if isinstance(result, dict) else False
+        error = result.get("error", "") if isinstance(result, dict) else ""
+        return SkillResult(success=success, data=result, error=error).to_dict()
+
+
+def _extract_smiles(args: Any) -> str | None:
+    """Normalise various arg formats to a SMILES string."""
+    if isinstance(args, dict):
+        return args.get("smiles") or None
+    if hasattr(args, "smiles"):
+        return args.smiles or None
+    return None

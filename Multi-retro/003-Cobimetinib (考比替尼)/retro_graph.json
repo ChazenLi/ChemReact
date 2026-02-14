@@ -1,0 +1,89 @@
+{
+  "target_smiles": "O=C(c1ccc(F)c(F)c1Nc1ccc(I)cc1F)N1CC(O)([C@@H]2CCCCN2)C1",
+  "target_name": "Cobimetinib (MEK inhibitor)",
+  "strategy": "convergent",
+  "nodes": {
+    "T": {
+      "node_id": "T",
+      "smiles": "O=C(c1ccc(F)c(F)c1Nc1ccc(I)cc1F)N1CC(O)([C@@H]2CCCCN2)C1",
+      "is_target": true,
+      "status": "solved",
+      "label": "Cobimetinib"
+    },
+    "I1": {
+      "node_id": "I1",
+      "smiles": "O=C(Cl)c1ccc(F)c(F)c1Nc1ccc(I)cc1F",
+      "is_target": false,
+      "status": "solved",
+      "label": "Diarylamine benzoyl chloride intermediate"
+    },
+    "P1": {
+      "node_id": "P1",
+      "smiles": "O=C(Cl)c1ccc(F)c(F)c1",
+      "is_target": false,
+      "status": "terminal",
+      "label": "2,4-Difluorobenzoyl chloride",
+      "availability": "purchasable",
+      "sa_score": 1.889
+    },
+    "P2": {
+      "node_id": "P2",
+      "smiles": "Nc1ccc(I)cc1F",
+      "is_target": false,
+      "status": "terminal",
+      "label": "4-Iodo-2-fluoroaniline",
+      "availability": "purchasable",
+      "sa_score": 2.169
+    },
+    "P3": {
+      "node_id": "P3",
+      "smiles": "OC1([C@@H]2CCCCN2)CNC1",
+      "is_target": false,
+      "status": "terminal",
+      "label": "3-Hydroxy-3-(piperidin-2-yl)azetidine",
+      "availability": "easily_synthesizable",
+      "sa_score": 3.684
+    }
+  },
+  "edges": {
+    "E1": {
+      "edge_id": "E1",
+      "reaction_smiles": "O=C(Cl)c1ccc(F)c(F)c1Nc1ccc(I)cc1F.OC1([C@@H]2CCCCN2)CNC1>>O=C(c1ccc(F)c(F)c1Nc1ccc(I)cc1F)N1CC(O)([C@@H]2CCCCN2)C1",
+      "reaction_type": "Amide coupling (acyl chloride + amine)",
+      "product_id": "T",
+      "precursor_ids": ["I1", "P3"],
+      "conditions": "Et3N or DIPEA, DCM, 0C -> RT",
+      "byproducts": ["HCl"],
+      "validated": true
+    },
+    "E2": {
+      "edge_id": "E2",
+      "reaction_smiles": "O=C(Cl)c1ccc(F)c(F)c1.Nc1ccc(I)cc1F>>O=C(Cl)c1ccc(F)c(F)c1Nc1ccc(I)cc1F",
+      "reaction_type": "Buchwald-Hartwig amination / SNAr",
+      "product_id": "I1",
+      "precursor_ids": ["P1", "P2"],
+      "conditions": "Pd2(dba)3, BINAP, Cs2CO3, toluene, 100C or K2CO3, DMSO, 120C (SNAr)",
+      "byproducts": ["HF"],
+      "validated": true
+    }
+  },
+  "synthesis_summary": {
+    "total_steps": 2,
+    "strategy": "convergent",
+    "all_precursors_available": true,
+    "step_1": {
+      "name": "Diarylamine formation (Buchwald-Hartwig or SNAr)",
+      "reactants": ["O=C(Cl)c1ccc(F)c(F)c1 (2,4-Difluorobenzoyl chloride)", "Nc1ccc(I)cc1F (4-Iodo-2-fluoroaniline)"],
+      "product": "O=C(Cl)c1ccc(F)c(F)c1Nc1ccc(I)cc1F",
+      "conditions": "Pd2(dba)3/BINAP/Cs2CO3/toluene/100C or K2CO3/DMSO/120C",
+      "notes": "SNAr on ortho-F activated by COCl. Iodine preserved for potential downstream coupling."
+    },
+    "step_2": {
+      "name": "Amide coupling",
+      "reactants": ["O=C(Cl)c1ccc(F)c(F)c1Nc1ccc(I)cc1F (Intermediate)", "OC1([C@@H]2CCCCN2)CNC1 (Azetidine-piperidine)"],
+      "product": "O=C(c1ccc(F)c(F)c1Nc1ccc(I)cc1F)N1CC(O)([C@@H]2CCCCN2)C1 (Cobimetinib)",
+      "conditions": "Et3N, DCM, 0C -> RT, 2-4h",
+      "notes": "Selective acylation on azetidine NH (less hindered than piperidine NH). May need Boc protection on piperidine N."
+    }
+  }
+}

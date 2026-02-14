@@ -1,0 +1,87 @@
+{
+  "target_smiles": "O=C(/C=C/c1cccc(S(=O)(=O)Nc2ccccc2)c1)NO",
+  "target_name": "HDAC Inhibitor (Hydroxamic acid sulfonamide)",
+  "strategy": "convergent",
+  "nodes": {
+    "T": {
+      "node_id": "T",
+      "smiles": "O=C(/C=C/c1cccc(S(=O)(=O)Nc2ccccc2)c1)NO",
+      "is_target": true,
+      "status": "solved",
+      "label": "HDAC Inhibitor Target"
+    },
+    "I1": {
+      "node_id": "I1",
+      "smiles": "O=C(/C=C/c1cccc(S(=O)(=O)Cl)c1)NO",
+      "is_target": false,
+      "status": "solved",
+      "label": "Acrylohydroxamic acid sulfonyl chloride"
+    },
+    "P1": {
+      "node_id": "P1",
+      "smiles": "Nc1ccccc1",
+      "is_target": false,
+      "status": "terminal",
+      "label": "Aniline",
+      "availability": "purchasable",
+      "sa_score": 1.263
+    },
+    "P2": {
+      "node_id": "P2",
+      "smiles": "C=CC(=O)NO",
+      "is_target": false,
+      "status": "terminal",
+      "label": "Acrylohydroxamic acid",
+      "availability": "purchasable",
+      "sa_score": 2.978
+    },
+    "P3": {
+      "node_id": "P3",
+      "smiles": "O=S(=O)(Cl)c1cccc(Br)c1",
+      "is_target": false,
+      "status": "terminal",
+      "label": "3-Bromobenzenesulfonyl chloride",
+      "availability": "purchasable",
+      "sa_score": 1.919
+    }
+  },
+  "edges": {
+    "E1": {
+      "edge_id": "E1",
+      "reaction_smiles": "O=C(/C=C/c1cccc(S(=O)(=O)Cl)c1)NO.Nc1ccccc1>>O=C(/C=C/c1cccc(S(=O)(=O)Nc2ccccc2)c1)NO",
+      "reaction_type": "Sulfonamide formation",
+      "product_id": "T",
+      "precursor_ids": ["I1", "P1"],
+      "conditions": "Et3N, DCM, 0C -> RT, 2h",
+      "byproducts": ["HCl"],
+      "validated": true
+    },
+    "E2": {
+      "edge_id": "E2",
+      "reaction_smiles": "C=CC(=O)NO.O=S(=O)(Cl)c1cccc(Br)c1>>O=C(/C=C/c1cccc(S(=O)(=O)Cl)c1)NO",
+      "reaction_type": "Heck reaction",
+      "product_id": "I1",
+      "precursor_ids": ["P2", "P3"],
+      "conditions": "Pd(OAc)2, PPh3, Et3N, DMF, 100-120C",
+      "byproducts": ["HBr"],
+      "validated": true
+    }
+  },
+  "synthesis_summary": {
+    "total_steps": 2,
+    "strategy": "convergent",
+    "all_precursors_available": true,
+    "step_1": {
+      "name": "Heck Coupling",
+      "reactants": ["C=CC(=O)NO (Acrylohydroxamic acid)", "O=S(=O)(Cl)c1cccc(Br)c1 (3-Bromobenzenesulfonyl chloride)"],
+      "product": "O=C(/C=C/c1cccc(S(=O)(=O)Cl)c1)NO",
+      "conditions": "Pd(OAc)2, PPh3, Et3N, DMF, 100-120C"
+    },
+    "step_2": {
+      "name": "Sulfonamide Formation",
+      "reactants": ["O=C(/C=C/c1cccc(S(=O)(=O)Cl)c1)NO (Intermediate)", "Nc1ccccc1 (Aniline)"],
+      "product": "O=C(/C=C/c1cccc(S(=O)(=O)Nc2ccccc2)c1)NO",
+      "conditions": "Et3N, DCM, 0C -> RT, 2h"
+    }
+  }
+}
